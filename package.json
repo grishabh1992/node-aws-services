@@ -1,0 +1,47 @@
+{
+  "name": "node-typescript",
+  "version": "1.0.0",
+  "description": "This is a boilerplate for Node js application written in typescript",
+  "main": "index.js",
+  "scripts": {
+    "build:dev": "webpack --config webpack.config.js",
+    "build:dev-watch": "webpack --watch --config webpack.config.js",
+    "start:dev": "node dist/server",
+    "clean": "rimraf build",
+    "start": "webpack --watch --config webpack.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/grishabh1992/node-typescript.git"
+  },
+  "keywords": [
+    "node",
+    "typescript",
+    "boilerplate"
+  ],
+  "author": "Rishabh Garg",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/grishabh1992/node-typescript/issues"
+  },
+  "homepage": "https://github.com/grishabh1992/node-typescript#readme",
+  "dependencies": {
+    "ajv": "^6.9.1",
+    "aws-sdk": "^2.422.0",
+    "express": "^4.16.4",
+    "fs": "0.0.1-security",
+    "method-override": "^3.0.0",
+    "mongoose": "^5.4.19",
+    "nodemon": "^1.18.10",
+    "ramda": "^0.26.1",
+    "typescript": "^3.3.3",
+    "uuid": "^3.3.2"
+  },
+  "devDependencies": {
+    "@types/ramda": "github:types/npm-ramda#dist",
+    "ts-loader": "^5.3.3",
+    "webpack": "^4.29.3",
+    "webpack-cli": "^3.2.3",
+    "webpack-shell-plugin": "^0.5.0"
+  }
+}
