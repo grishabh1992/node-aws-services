@@ -1,39 +1,27 @@
 import * as AWS from 'aws-sdk';
-import { AppConfiguration } from '../../constants';
+import { AWSConfiguration, AWSSESBulkEmailTemplatePayload, AWSSESEmailPayload, AWSSESEmailTemplatePayload } from '../../models';
 export class AWSSESBucket {
   sesInstance;
-  constructor(){
-    AWS.config.update({
-      accessKeyId: AppConfiguration.aws.accessKeyId,
-      secretAccessKey: AppConfiguration.aws.secretAccessKey,
-    });
+  constructor(configuration:AWSConfiguration){
+    AWS.config.update(configuration);
     this.sesInstance = new AWS.SES();
   }
 
-  sendEmail(emailParams:{
-    from : string,
-    to : string,
-    subject : string,
-    body : string
-  } ,callback : Function) {
-    const sesRequestParam = {
-      Source: emailParams.from,
-        Destination: { ToAddresses: emailParams.to },
-        Message: {
-          Subject: {
-          Data: emailParams.subject
-        },
-        Body: {
-          Html: {
-                Charset: "UTF-8",
-                Data: ""+ emailParams.body +"",
-          }
-        }
-      }
-    }
+  sendEmail(emailParams: AWSSESEmailPayload,callback : Function) {
     this.sesInstance.sendEmail(emailParams, function(error, data) {
       return callback(error, data);
     });
   }
 
+  sendTemplateEmail(emailParams: AWSSESEmailTemplatePayload,callback : Function) {
+    this.sesInstance.sendEmail(emailParams, function(error, data) {
+      return callback(error, data);
+    });
+  }
+
+  sendBulkEmail(emailParams: AWSSESBulkEmailTemplatePayload,callback : Function) {
+    this.sesInstance.sendEmail(emailParams, function(error, data) {
+      return callback(error, data);
+    });
+  }
 }
